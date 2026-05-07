@@ -1,22 +1,15 @@
-import sys
-import os
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-networks_dir = os.path.join(current_dir, 'networks')
-sys.path.append(networks_dir)
-
-from benefit_systems import get_gym_details
-from calypso import scrape_calypso
-from cityfit import scrape_cityfit
-from justgym import scrape_justgym
-from wellfitness import scrape_wellfintness
-from xtremefitness import scrape_xf
+from networks.benefit_systems import scrape_benefit_systems
+from networks.calypso import scrape_calypso
+from networks.cityfit import scrape_cityfit
+from networks.justgym import scrape_justgym
+from networks.wellfitness import scrape_wellfintness
+from networks.xtremefitness import scrape_xf
 
 def run_all_updates():
     print("Updating data...")
 
     scrappers = [
-        "Benefit_systems", get_gym_details,
+        "Benefit_systems", scrape_benefit_systems,
         "Calypso", scrape_calypso,
         "CityFit", scrape_cityfit,
         "JustGym", scrape_justgym,
