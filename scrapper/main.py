@@ -9,7 +9,7 @@ def run_all_updates():
     print("Updating data...")
 
     scrappers = [
-        "Benefit_systems", scrape_benefit_systems,
+        "Benefit Systems", scrape_benefit_systems,
         "Calypso", scrape_calypso,
         "CityFit", scrape_cityfit,
         "JustGym", scrape_justgym,

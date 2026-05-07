@@ -2,7 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from geopy.geocoders import Nominatim
-from .database import upsert_benefit_systems_gyms_to_db 
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from database import upsert_benefit_systems_gyms_to_db
 
 def get_coords(address, city):
     try:
