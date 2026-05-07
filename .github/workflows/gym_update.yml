@@ -25,4 +25,5 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          PYTHONPATH: ${{ github.workspace }}/scrapper:${{ github.workspace }}/scrapper/networks
         run: python scrapper/main.py
