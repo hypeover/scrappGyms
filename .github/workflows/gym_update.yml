@@ -27,5 +27,6 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         working-directory: ./scrapper
         run: |
-          export PYTHONPATH=$PYTHONPATH:.
+          cd scrapper
+          export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/networks
           python main.py
