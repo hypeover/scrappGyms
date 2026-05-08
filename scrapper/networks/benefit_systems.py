@@ -5,11 +5,17 @@ import time
 from database import upsert_benefit_systems_gyms_to_db
 
 def get_gym_details(url, network_name):
-    headers = {'User-Agent': 'Mozilla/5.0'}
+    headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+}
     try:
         response = requests.get(url, headers=headers, timeout=10)
         soup = BeautifulSoup(response.text, 'html.parser')
-        
+        print(f"DEBUG {name}: Status {response.status_code}")
+        print(f"DEBUG {name}: HTML Length {len(response.text)}")
+        if "cloud-flare" in response.text.lower() or response.status_code == 403:
+            print(f"❌ Blokada CloudFlare/BotDetection na {name}!")
         target_script = soup.find('script', string=lambda t: t and 'SportsActivityLocation' in t)
         if not target_script:
             return None
@@ -51,6 +57,10 @@ def scrape_benefit_systems():
         print(f"🔍 Collecting links from: {name}")
         try:
             response = requests.get(url, headers=headers)
+            print(f"DEBUG {name}: Status {response.status_code}")
+            print(f"DEBUG {name}: HTML Length {len(response.text)}")
+            if "cloud-flare" in response.text.lower() or response.status_code == 403:
+                print(f"❌ Blokada CloudFlare/BotDetection na {name}!")
             soup = BeautifulSoup(response.text, 'html.parser')
             for link in soup.find_all('a', class_='button primary'):
                 href = link.get('href')
@@ -69,6 +79,10 @@ def scrape_benefit_systems():
         print(f"🔍 Collecting links from: {name}")
         try:
             response = requests.get(url, headers=headers)
+            print(f"DEBUG {name}: Status {response.status_code}")
+            print(f"DEBUG {name}: HTML Length {len(response.text)}")
+            if "cloud-flare" in response.text.lower() or response.status_code == 403:
+                print(f"❌ Blokada CloudFlare/BotDetection na {name}!")
             soup = BeautifulSoup(response.text, 'html.parser')
             for link in soup.select('ul > li > div > a'):
                 href = link.get('href')
