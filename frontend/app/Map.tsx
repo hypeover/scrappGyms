@@ -9,7 +9,16 @@ import {
   MapTileLayer,
   MapZoomControl,
 } from "@/components/ui/map";
-const MapComponent = ({ gyms }: { gyms: [] }) => {
+const MapComponent = ({
+  gyms,
+}: {
+  gyms: {
+    id: string;
+    network: string;
+    latitude: number;
+    longitude: number;
+  }[];
+}) => {
   const unique_networks = [...new Set(gyms.map((item) => item.network))];
 
   console.log(unique_networks);
