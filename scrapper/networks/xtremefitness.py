@@ -1,10 +1,5 @@
 import requests
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from database import upsert_benefit_systems_gyms_to_db
+from .database import upsert_benefit_systems_gyms_to_db
 
 def parse_hours(data_hours):
     day_map = {

@@ -2,12 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from database import upsert_benefit_systems_gyms_to_db
+from .database import upsert_benefit_systems_gyms_to_db
 
 def get_gym_details(url, network_name):
     headers = {'User-Agent': 'Mozilla/5.0'}

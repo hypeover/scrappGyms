@@ -1,12 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re 
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from database import upsert_benefit_systems_gyms_to_db
+from .database import upsert_benefit_systems_gyms_to_db
 
 def clean_address_data(raw_address):
     zip_code_pattern = r'\d{2}-\d{3}'
