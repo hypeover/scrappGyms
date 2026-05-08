@@ -9,12 +9,12 @@ def run_all_updates():
     print("Updating data...")
 
     scrappers = [
-        "Benefit Systems", scrape_benefit_systems,
-        "Calypso", scrape_calypso,
-        "CityFit", scrape_cityfit,
-        "JustGym", scrape_justgym,
-        "Well Fitness", scrape_wellfintness,
-        "Xtreme Fitness", scrape_xf
+        ("Benefit Systems", scrape_benefit_systems),
+        ("Calypso", scrape_calypso),
+        ("CityFit", scrape_cityfit),
+        ("JustGym", scrape_justgym),
+        ("Well Fitness", scrape_wellfintness),
+        ("Xtreme Fitness", scrape_xf),
     ]
 
     for name, func in scrappers:

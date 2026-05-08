@@ -2,18 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from geopy.geocoders import Nominatim
-import sys
-import os
-
-# Ta linia dodaje folder 'scrapper' do pamięci Pythona
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Teraz importujemy z nowej nazwy:
-try:
-    from db_manager import upsert_benefit_systems_gyms_to_db
-except ImportError:
-    # Backup na wypadek gdyby Python szukał inaczej
-    from ..db_manager import upsert_benefit_systems_gyms_to_db
+from database import upsert_benefit_systems_gyms_to_db
 
 def get_coords(address, city):
     try:
