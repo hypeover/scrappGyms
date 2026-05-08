@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from geopy.geocoders import Nominatim
-from .database import upsert_benefit_systems_gyms_to_db
+from networks.database import upsert_benefit_systems_gyms_to_db
 
 def get_coords(address, city):
     try:

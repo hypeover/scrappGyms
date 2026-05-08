@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
-from .database import upsert_benefit_systems_gyms_to_db
+from networks.database import upsert_benefit_systems_gyms_to_db
 
 def get_gym_details(url, network_name):
     headers = {'User-Agent': 'Mozilla/5.0'}
