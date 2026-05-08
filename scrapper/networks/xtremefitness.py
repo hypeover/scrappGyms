@@ -1,5 +1,5 @@
 import requests
-from networks.database import upsert_benefit_systems_gyms_to_db
+from database import upsert_benefit_systems_gyms_to_db
 
 def parse_hours(data_hours):
     day_map = {

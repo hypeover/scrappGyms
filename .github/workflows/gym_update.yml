@@ -26,4 +26,6 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         working-directory: ./scrapper
-        run: python main.py
+        run: |
+          export PYTHONPATH=$PYTHONPATH:.
+          python main.py
