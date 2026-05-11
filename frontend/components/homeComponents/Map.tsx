@@ -19,7 +19,7 @@ import {
   CardContent,
   CardFooter
 } from "@/components/ui/card";
-import Hours from './hours'
+import Hours from '@/components/homeComponents/hours'
 
 const networkColors = {
   JustGym: "#f9b617",
@@ -54,7 +54,6 @@ const MapComponent = ({
     setMounted(true);
   }, []);
 
-  console.log(unique_networks);
 
   return (
     <div className={`rounded-xl h-200 shadow-xl w-6/8 transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
@@ -75,19 +74,17 @@ const MapComponent = ({
                 {gyms
                   .filter((gym) => gym.network === network)
                   .map((gym) => {
-                    // Pobieramy kolor z naszej mapy lub ustawiamy domyślny
                     const markerColor = networkColors[gym.network] || "black";
 
                     return (
                       <MapMarker
                         key={gym.id}
                         position={[gym.latitude, gym.longitude]}
-                        // Przekazujemy dynamiczny kolor do ikonki
                         icon={<MapPin color={markerColor} />}
                       >
                         <MapTooltip side="top">{gym.network}</MapTooltip>
                         <MapPopup className="rounded-xl py-1 px-0" >
-                          <Card className="gap-0 px-1 py-0 b-none outline-0 ring-0 shadow-none">
+                          <Card className="gap-0 px-4 py-2.5 b-none outline-0 ring-0 shadow-none">
                             <CardTitle className="text-xl font-bold text-left" ><a target="_blank" href={gym.link}>{gym.network}</a></CardTitle>
                             <CardContent className="text-left p-0 mt-3">
                               <p className="text-lg font-bold" >{gym.city}</p>

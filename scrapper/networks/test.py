@@ -4,12 +4,10 @@ import json
 from database import upsert_benefit_systems_gyms_to_db
 
 def scrape_benefit_systems():
-    # Używamy jednego scrapera dla całej sesji
     scraper = cloudscraper.create_scraper(
         browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True}
     )
 
-    # API endpointy są znacznie stabilniejsze niż HTML
     networks = [
         {"url": "https://zdrofit.pl/api/clubs/getclubs", "name": "Zdrofit", "base": "https://zdrofit.pl"},
         {"url": "https://fitness-academy.com.pl/api/clubs/getclubs", "name": "Fitness Academy", "base": "https://fitness-academy.com.pl"},

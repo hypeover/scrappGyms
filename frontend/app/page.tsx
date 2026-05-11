@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
-import MapComponent from './Map';
-import Charts from './charts';
+import MapComponent from '@/components/homeComponents/Map';
+import { DataTable } from '../components/homeComponents/table';
+import { columns } from '../components/homeComponents/columns';
+import LenHeader from '@/components/homeComponents/header';
 
 interface Gym {
   id: string;
@@ -23,9 +25,9 @@ const Home = async () => {
 
   return (
     <div className='h-auto w-full flex flex-col justify-center bg-primary--foreground items-center'>
-      <h1 className='font-semibold my-5 text-3xl font-mono' >Aktualnie na mapie jest {gymsData.length} obiektów.</h1>
+      <LenHeader dataLen={gymsData.length} />
       <MapComponent gyms={gymsData as unknown as []} />
-      <Charts />
+      <DataTable data={gymsData} columns={columns} />
     </div>
   )
 }

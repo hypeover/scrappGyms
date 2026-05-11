@@ -191,3 +191,13 @@
   top: 15px;
   right: 13px;
 }
+
+.leaflet-popup-close-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.leaflet-popup-close-button span:focus {
+  outline: none;
+  box-shadow: none;
+}
