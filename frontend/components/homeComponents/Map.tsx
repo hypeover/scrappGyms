@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/card";
 import Hours from '@/components/homeComponents/hours'
 
-const networkColors = {
+const networkColors: Record<string, string> = {
   JustGym: "#f9b617",
   Zdrofit: "#0099de",
   "Fitness Academy": "#ee3030",
@@ -56,8 +56,8 @@ const MapComponent = ({
 
 
   return (
-    <div className={`rounded-xl h-200 shadow-xl w-6/8 transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-      <Map className="rounded-xl h-full shadow-xl" center={[51.919438, 19.145136]} zoom={7}>
+    <div className={`sm:rounded-xl sm:h-200 lg:h-200 md:shadow-xl md:h-200 xl:h-200 h-165 l: lg:shadow-xl w-full transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+      <Map className="sm:rounded-xl h-full shadow-xl" center={[51.919438, 19.145136]} zoom={7}>
         <MapLayers
           defaultLayerGroups={unique_networks.map((network) => network)}
         >
@@ -86,7 +86,7 @@ const MapComponent = ({
                         <MapPopup className="rounded-xl py-1 px-0" >
                           <Card className="gap-0 px-4 py-2.5 b-none outline-0 ring-0 shadow-none">
                             <CardTitle className="text-xl font-bold text-left" ><a target="_blank" href={gym.link}>{gym.network}</a></CardTitle>
-                            <CardContent className="text-left p-0 mt-3">
+                            <CardContent className="text-left p-0 mt-3 text-base font-medium">
                               <p className="text-lg font-bold" >{gym.city}</p>
                               <br/>
                               <p>{gym.address}</p>
@@ -102,7 +102,7 @@ const MapComponent = ({
               </MapMarkerClusterGroup>
             </MapLayerGroup>
           ))}
-          <MapControlContainer className="bg-popover text-popover-foreground bottom-1 left-1 flex flex-col gap-2 rounded-md border p-2 shadow">
+          <MapControlContainer className="hidden sm:flex bg-popover text-popover-foreground bottom-1 left-1  flex-col gap-2 rounded-md border p-2 shadow">
             {Object.entries(networkColors).map(([networkName, color]) => (
               <div key={networkName} className="flex items-center gap-3 rounded-xl">
                 <div

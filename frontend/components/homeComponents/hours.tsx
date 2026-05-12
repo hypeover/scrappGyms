@@ -10,21 +10,34 @@ const DAYS_ORDER = [
   { key: "Sunday", label: "Niedziela" },
 ] as const;
 
-const Hours = ({ hours }: { hours: Record<string, string> }) => {
-  const formatTime = (timeRange: string) => {
-    return timeRange.replace(/:00/g, "");
-  };
+const formatOpeningHours = (rawTime: string | undefined) => {
+  if (!rawTime) return "Zamknięte";
+  
+  return rawTime
+    .split('-')
+    .map(time => {
+      const parts = time.trim().split(':');
+      const hours = parts[0].padStart(2, '0');
+      const minutes = parts[1] ? parts[1].padStart(2, '0') : '00';
+      
+      return `${hours}:${minutes}`;
+    })
+    .join(' - '); 
+};
 
+const Hours = ({ hours }: { hours: Record<string, string> }) => {
   return (
     <div className="w-full mt-3">
-      <h1 className="font-bold text-lg " >Godziny otwarcia:</h1>
+      <h1 className="font-bold text-lg">Godziny otwarcia:</h1>
       <ul className="space-y-1 mt-2">
         {DAYS_ORDER.map(({ key, label }) => {
           const time = hours[key];
           return (
-            <li key={key} className="flex justify-between text-sm">
-              <span>{label}</span>
-              <span>{time ? formatTime(time) : "Zamknięte"}</span>
+            <li key={key} className="flex justify-between text-base font-normal">
+              <span className="text-zinc-600">{label}</span>
+              <span className="font-medium tabular-nums">
+                {formatOpeningHours(time)}
+              </span>
             </li>
           );
         })}

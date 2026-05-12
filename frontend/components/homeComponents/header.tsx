@@ -10,7 +10,7 @@ const LenHeader = ({ dataLen }: { dataLen: number }) => {
   }, []);
 
   return (
-    <h1 className="font-semibold my-5 text-3xl font-mono">
+    <h1 className=" text-center font-semibold my-5 sm:text-2xl md:text-3xl text-md lg:text-3xl font-mono">
       Aktualnie na mapie jest <NumberFlow value={value} /> obiektów.
     </h1>
   );
