@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MapPinIcon = ({
-  size = undefined,
+  size = 28,
   color = '#000000',
   strokeWidth = 0,
   background = 'transparent',
@@ -10,7 +10,8 @@ const MapPinIcon = ({
   shadow = 0,
   flipHorizontal = false,
   flipVertical = false,
-  padding = 0
+  padding = 0,
+  fill = '#000000'
 }) => {
   const transforms = [];
   if (rotation !== 0) transforms.push(`rotate(${rotation}deg)`);
