@@ -4,6 +4,7 @@ import { DataTable } from "../components/homeComponents/table";
 import { columns } from "../components/homeComponents/columns";
 import LenHeader from "@/components/homeComponents/header";
 import GymList from "@/components/homeComponents/gym-list";
+import Footer from "@/components/homeComponents/footer"
 
 interface Gym {
   id: string;
@@ -32,6 +33,7 @@ const Home = async () => {
         <div className="hidden sm:inline w-0 ">
           <DataTable data={gymsData} columns={columns} />
         </div>
+        <Footer/>
       </div>
     </div>
   );

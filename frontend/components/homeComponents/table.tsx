@@ -47,7 +47,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-full mb-20">
+    <div className="w-full mb-10">
       <div className="flex flex-row justify-between" >
         <div className="flex items-center py-4">
           <Input
@@ -81,7 +81,7 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
       <div className="w-auto overflow-hidden rounded-xl w-full">
-        <Table className="text-base min-h-[650px]\" >
+        <Table className="text-base min-h-[650px]" >
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow className="border-0" key={headerGroup.id}>
@@ -103,7 +103,7 @@ export function DataTable<TData, TValue>({
                         index === 0 ? "rounded-l-lg" : ""
                       } ${
                         index === headerGroup.headers.length - 1 ? "rounded-r-lg" : ""
-                      }`}
+                      } ${header.column.id === 'link' ? 'text-center' : ''}`}
                       key={header.id}
                     >
                       {header.isPlaceholder
@@ -145,7 +145,7 @@ export function DataTable<TData, TValue>({
                         index === 0 ? "rounded-l-lg" : ""
                       } ${
                         index === row.getVisibleCells().length - 1 ? "rounded-r-lg" : ""
-                      }`}
+                      } ${cell.column.id === 'link' ? 'text-center' : ''}`}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

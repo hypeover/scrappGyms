@@ -4,17 +4,18 @@ from networks.cityfit import scrape_cityfit
 from networks.justgym import scrape_justgym
 from networks.wellfitness import scrape_wellfintness
 from networks.xtremefitness import scrape_xf
+from networks.test import scrape_zdrofit
 
 def run_all_updates():
     print("Updating data...")
 
     scrappers = [
-        ("Benefit Systems", scrape_benefit_systems),
         ("Calypso", scrape_calypso),
         ("CityFit", scrape_cityfit),
         ("JustGym", scrape_justgym),
         ("Well Fitness", scrape_wellfintness),
         ("Xtreme Fitness", scrape_xf),
+        ("Benefit Systems", scrape_benefit_systems),
     ]
 
     for name, func in scrappers:
@@ -29,3 +30,7 @@ def run_all_updates():
 
 if __name__ == "__main__":
     run_all_updates()
+
+
+
+    

@@ -66,8 +66,8 @@ export const columns: ColumnDef<gymsData>[] = [
     cell: ({ row }) => {
       const link = row.getValue("link") as string;
       return (
-        <a className="font-medium" target="_blank" href={link}>
-          Link to website
+        <a className="font-medium inline-flex justify-center w-full" target="_blank" href={link}>
+            <Button className="cursor-pointer rounded-xl">Go to website</Button>
         </a>
       );
     },
@@ -81,7 +81,7 @@ export const columns: ColumnDef<gymsData>[] = [
         <div className="flex justify-center">
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="cursor-pointer rounded-xl " variant="outline">
+              <Button className="cursor-pointer rounded-xl ">
                 Hours
               </Button>
             </DialogTrigger>

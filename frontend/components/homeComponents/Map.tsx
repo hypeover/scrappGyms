@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect } from "react";
+import MapPinIcon from './map-pin'
 import {
   Map,
   MapLayerGroup,
@@ -12,7 +13,6 @@ import {
   MapMarkerClusterGroup,
   MapTooltip,
 } from "@/components/ui/map";
-import { MapPin } from "lucide-react";
 import {
   Card,
   CardTitle,
@@ -80,7 +80,7 @@ const MapComponent = ({
                       <MapMarker
                         key={gym.id}
                         position={[gym.latitude, gym.longitude]}
-                        icon={<MapPin color={markerColor} />}
+                        icon={<MapPinIcon fill={markerColor} size={28} color={markerColor} />}
                       >
                         <MapTooltip side="top">{gym.network}</MapTooltip>
                         <MapPopup className="rounded-xl py-1 px-0" >

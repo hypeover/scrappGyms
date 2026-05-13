@@ -21,6 +21,9 @@ jobs:
         run: |
           pip install -r scrapper/requirements.txt
 
+      - name: Install Playwright Browsers
+        run: playwright install chromium --with-deps
+          
       - name: Run Scrapper
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
