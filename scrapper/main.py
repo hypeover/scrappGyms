@@ -4,7 +4,6 @@ from networks.cityfit import scrape_cityfit
 from networks.justgym import scrape_justgym
 from networks.wellfitness import scrape_wellfintness
 from networks.xtremefitness import scrape_xf
-from networks.test import scrape_zdrofit
 
 def run_all_updates():
     print("Updating data...")
