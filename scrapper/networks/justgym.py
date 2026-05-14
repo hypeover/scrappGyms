@@ -7,14 +7,21 @@ from database import upsert_benefit_systems_gyms_to_db
 
 def get_coords(address, city):
     try:
-        loc = Nominatim(user_agent="GymMapProject_Scraper")
-        search_query = f"{address.replace('ul. ', '')}, {city}, Poland"
+        loc = Nominatim(user_agent="GymMapProject_Unique_Scraper_v2")
+        clean_addr = address.replace("III", "3").replace("II", "2").replace("ul. ", "")
+        search_query = f"{address}, {city}, Poland"
         getLoc = loc.geocode(search_query)
+        
+        if not getLoc:
+            search_query = f"{address.replace('ul. ', '')}, {city}, Poland"
+            getLoc = loc.geocode(search_query)
+
         if getLoc:
-            return getLoc.latitude, getLoc.longitude
+            return float(getLoc.latitude), float(getLoc.longitude)
+        
         return 0.0, 0.0 
     except Exception as e:
-        print(f"❌ Error fetching coordinates for {address}, {city}: {e}")
+        print(f"❌ Error: {e}")
         return 0.0, 0.0
 
 def get_just_gym_hours(link_key, headers):
@@ -59,6 +66,10 @@ def scrape_justgym():
                     lng = float(raw_lng)
                 except ValueError:
                     lat, lng = get_coords(item.get('data-map-address'), item.get('data-map-city'))
+
+            if lat == lng and lat != 0.0:
+                print(f"🚨 Logic Error: Lat and Lng are identical for {address}. Retrying...")
+                lat, lng = get_coords(address, city)
 
             if item.get('data-map-twentyfour') == '':
                 print(f"⚠️ Collecting hours for {item.get('data-map-place')}...")
